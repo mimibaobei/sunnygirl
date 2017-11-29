@@ -9,15 +9,42 @@
             width: 100%;
             height: 100%;
             text-align: center;
+            display: flex;
         }
 
         canvas {
             display: block;
             margin:auto;
         }
+        #wait{
+            top:calc(40% - 115px) ;
+            left: calc(50% - 30%);
+            width: 60%;
+            height: 230px;
+            position: absolute;
+        }
+        #ball{
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: orangered;
+            animation:mymove 2s infinite;
+            animation-direction:alternate;
+            position: absolute;
+        }
+        @keyframes mymove
+        {
+            from {left:19%;}
+            to {left:78%;}
+        }
+
     </style>
 </head>
 <body>
+<div id="wait">
+    <img src="img/sunnygirl.png" height="200px" width="auto"/>
+    <div id="ball"></div>
+</div>
 <canvas id="animation"></canvas>
 <script>
     var context = document.getElementById("animation");
@@ -37,6 +64,7 @@
     var xratio=document.documentElement.clientWidth/1600;
     var yratio= document.documentElement.clientHeight/794;
 window.onload=function () {
+    document.getElementById("wait").style.display="none";
     var mu = 0;
     resizeCanvas();
     aim();
